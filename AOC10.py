@@ -1,5 +1,5 @@
 map = open("10.txt").read().strip().split("\n")
-map = [[int(x)for x in list(row)] for row in map]
+map = [[int(x) for x in list(row)] for row in map]
 
 paths = []
 pheads = []
