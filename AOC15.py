@@ -2,11 +2,7 @@ from time import sleep
 input = open("15.txt").read().strip().split("\n\n")
 dirs = {"^":(-1,0),">":(0,1),"v":(1,0),"<":(0,-1)}
 map1 = [list(row) for row in input[0].split("\n")]
-for row in range(len(map1)):
-    for col in range(len(map1[0])):
-        if map1[row][col] == "@":
-            rob1 = [row,col]
-
+rob1 = [[row,col] for row in range(len(map1)) for col in range(len(map1[0])) if map1[row][col] == "@"][0]
 map2 = []
 for i,row in enumerate(input[0].split("\n")):
     map2.append([])
@@ -76,6 +72,7 @@ for part in range(2):
             elif intheway[-1] == [None]:
                 intheway.pop(-1)
                 moveaway.pop(-1)
+                
         moved = set()
         moveaway.reverse()
         for push in moveaway:
