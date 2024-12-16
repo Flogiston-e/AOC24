@@ -6,7 +6,7 @@ dirs = [(0,1),(1,0),(0,-1),(-1,0)]
 H = len(map)
 W = len(map[0])
 Q = defaultdict(list)
-Q[0].append((H-2,1,0,[(H-2,1)])) # cost:[(y,x,dir),....] dir 0123,
+Q[0].append((H-2,1,0,[(H-2,1)])) # cost:[(y,x,dir,path),....] dir 0123,
 seen = {} # (y,x,dir):cost
 
 best_paths = []
