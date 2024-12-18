@@ -2,7 +2,7 @@ input = open("18.txt").read().strip().split("\n")
 bytes = [(int(x),int(y)) for byte in input for x,y in [byte.split(",")]]
 
 def calculator(bytes,part1):
-    Q, seen = [((0,0),0)], [(0,0)]
+    Q, seen, bytes= [((0,0),0)], {(0,0)}, set(bytes)
     while Q:
         (x,y),steps = Q.pop(0)
         if (x,y) == (70,70):
@@ -10,9 +10,9 @@ def calculator(bytes,part1):
             return True
         for dx,dy in [(1,0),(0,1),(-1,0),(0,-1)]:
             if 0 <= x+dx <= 70 and 0 <= y+dy <= 70:
-                if (x+dx, y+dy) not in seen+bytes:
+                if (x+dx, y+dy) not in seen and (x+dx, y+dy) not in bytes:
                     Q.append(((x+dx, y+dy), steps+1))
-                    seen.append((x+dx, y+dy))
+                    seen.add((x+dx, y+dy))
 
 print(calculator(bytes[0:1024],True))
 for i in range(len(bytes),-1,-1):
